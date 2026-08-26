@@ -19,15 +19,27 @@ public class Cliente {
     private String nome;
     @Column(name = "email", nullable = false)
     private String email;
+    @Column(name = "senha", nullable = false)
+    private String senha;
     @Column(name = "nascimento", nullable = false)
     private String nascimento;
 
-    
+    public Cliente () {}
 
-    public Cliente(String nome, String email, String nascimento) {
+    public Cliente(Integer id, String nome, String email, String senha, String nascimento) {
+        this.id = id;
         this.nome = nome;
-        this.nascimento = nascimento;
         this.email = email;
+        this.senha = senha;
+        this.nascimento = nascimento;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getNome() {
@@ -38,6 +50,22 @@ public class Cliente {
         this.nome = nome;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
+
     public String getNascimento() {
         return nascimento;
     }
@@ -46,12 +74,6 @@ public class Cliente {
         this.nascimento = nascimento;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
+    
 }
 
