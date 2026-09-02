@@ -1,5 +1,7 @@
 package com.senai.rental_eventos.models;
 
+import java.time.LocalDate;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -22,11 +24,11 @@ public class Cliente {
     @Column(name = "senha", nullable = false)
     private String senha;
     @Column(name = "nascimento", nullable = false)
-    private String nascimento;
+    private LocalDate nascimento;
 
     public Cliente () {}
 
-    public Cliente(Integer id, String nome, String email, String senha, String nascimento) {
+    public Cliente(Integer id, String nome, String email, String senha, LocalDate nascimento) {
         this.id = id;
         this.nome = nome;
         this.email = email;
@@ -66,11 +68,11 @@ public class Cliente {
         this.senha = senha;
     }
 
-    public String getNascimento() {
+    public LocalDate getNascimento() {
         return nascimento;
     }
 
-    public void setNascimento(String nascimento) {
+    public void setNascimento(LocalDate nascimento) {
         this.nascimento = nascimento;
     }
 

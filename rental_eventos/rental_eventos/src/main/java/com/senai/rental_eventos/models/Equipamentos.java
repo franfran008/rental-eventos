@@ -22,7 +22,7 @@ public class Equipamentos {
     @Column(name = "modelo", nullable = false)
     private String modelo;
     @Column(name = "categoria", nullable = false)
-    private Integer categoria;
+    private String categoria;
     @Column(name = "potencia", nullable = false)
     private Integer potencia;
     @Column(name = "material", nullable = false)
@@ -40,7 +40,7 @@ public class Equipamentos {
     @JoinColumn(name = "aluguel_id", referencedColumnName = "aluguel_id")
     private Aluguel aluguel;
 
-    public Equipamentos(String marca, String modelo, Integer categoria, Integer potencia, String material, Double peso, String dimensoes, String cor, Integer estoque) {
+    public Equipamentos(String marca, String modelo, String categoria, Integer potencia, String material, Double peso, String dimensoes, String cor, Integer estoque) {
         this.marca = marca;
         this.modelo = modelo;
         this.categoria = categoria;
@@ -79,11 +79,11 @@ public class Equipamentos {
         this.modelo = modelo;
     }
 
-    public Integer getCategoria() {
+    public String getCategoria() {
         return categoria;
     }
 
-    public void setCategoria(Integer categoria) {
+    public void setCategoria(String categoria) {
         this.categoria = categoria;
     }
 

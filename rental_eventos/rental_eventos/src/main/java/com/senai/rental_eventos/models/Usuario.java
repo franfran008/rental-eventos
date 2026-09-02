@@ -1,5 +1,7 @@
 package com.senai.rental_eventos.models;
 
+import java.time.LocalDate;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -20,38 +22,60 @@ public class Usuario {
     @Column(name = "senha", nullable = false)
     private String senha;
     @Column(name = "nascimento", nullable = false)
-    private String nascimento;
+    private LocalDate nascimento;
     @Column(name = "cpf", nullable = false)
     private String cpf;
 
-    public Usuario(String nome, String senha, String nascimento, String cpf) {
-        this.nome = nome;
-        this.nascimento = nascimento;
-        this.cpf = cpf;
-    }
+public Usuario () {}
 
-    public String getNome() {
-        return nome;
-    }
+public Usuario(Integer id, String nome, String senha, LocalDate nascimento, String cpf) {
+    this.id = id;
+    this.nome = nome;
+    this.senha = senha;
+    this.nascimento = nascimento;
+    this.cpf = cpf;
+}
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
+public Integer getId() {
+    return id;
+}
 
-    public String getNascimento() {
-        return nascimento;
-    }
+public void setId(Integer id) {
+    this.id = id;
+}
 
-    public void setNascimento(String nascimento) {
-        this.nascimento = nascimento;
-    }
+public String getNome() {
+    return nome;
+}
 
-    public String getCpf() {
-        return cpf;
-    }
+public void setNome(String nome) {
+    this.nome = nome;
+}
 
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
+public String getSenha() {
+    return senha;
+}
+
+public void setSenha(String senha) {
+    this.senha = senha;
+}
+
+public LocalDate getNascimento() {
+    return nascimento;
+}
+
+public void setNascimento(LocalDate nascimento) {
+    this.nascimento = nascimento;
+}
+
+public String getCpf() {
+    return cpf;
+}
+
+public void setCpf(String cpf) {
+    this.cpf = cpf;
+}
+
+
 }
 

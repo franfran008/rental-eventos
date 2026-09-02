@@ -1,9 +1,10 @@
 package com.senai.rental_eventos.services;
 
 import com.senai.rental_eventos.models.Equipamentos;
-import com.senai.rental_eventos.repositories.EquipamentosRepository;
+import com.senai.rental_eventos.repositories.EquipamentosRepositories;
+
+import org.jspecify.annotations.NonNull;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Service;
 import java.util.List;
 
@@ -13,10 +14,10 @@ public class EquipamentosService {
 
     
     @Autowired
-    private EquipamentosRepository equipamentosRepository;
+    private EquipamentosRepositories equipamentosRepository;
 
 public Equipamentos salvar(@NonNull Equipamentos equipamentos){
-    if(Equipamentos != null) {}
+    if(equipamentos != null) {}
         return equipamentosRepository.save(equipamentos);
     }
 

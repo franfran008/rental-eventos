@@ -1,9 +1,10 @@
 package com.senai.rental_eventos.services;
 
 import com.senai.rental_eventos.models.Cliente;
-import com.senai.rental_eventos.repositories.ClienteRepository;
+import com.senai.rental_eventos.repositories.ClienteRepositories;
+
+import org.jspecify.annotations.NonNull;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -11,7 +12,7 @@ public class ClienteService {
 
 
     @Autowired
-    private ClienteRepository clienteRepository;
+    private ClienteRepositories clienteRepository;
 
 public Cliente salvar(@NonNull Cliente cliente){
     if(cliente != null) {}
@@ -25,7 +26,7 @@ public Cliente salvar(@NonNull Cliente cliente){
      public Cliente login(String email, String senha){
         Cliente cliente = clienteRepository.findByCliente(email, senha);
         if(cliente != null && senha.equals(cliente.getSenha())){
-            return Cliente;
+            return cliente;
         }
         return null;
     }

@@ -1,8 +1,10 @@
 package com.senai.rental_eventos.repositories;
 
-import com.senai.rental_eventos.entities.Cliente;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
+
+import com.senai.rental_eventos.models.Cliente;
 
 @Repository
 public interface ClienteRepositories extends JpaRepository<Cliente, Integer> {

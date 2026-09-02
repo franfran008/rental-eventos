@@ -1,9 +1,10 @@
 package com.senai.rental_eventos.services;
 
 import com.senai.rental_eventos.models.Aluguel;
-import com.senai.rental_eventos.repositories.AluguelRepository;
+import com.senai.rental_eventos.repositories.AluguelRepositories;
+
+import org.jspecify.annotations.NonNull;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Service;
 import java.util.List;
 
@@ -13,7 +14,7 @@ public class AluguelService {
 
     
     @Autowired
-    private AluguelRepository aluguelRepository;
+    private AluguelRepositories aluguelRepository;
 
 public Aluguel salvar(@NonNull Aluguel aluguel){
     if(aluguel != null) {}

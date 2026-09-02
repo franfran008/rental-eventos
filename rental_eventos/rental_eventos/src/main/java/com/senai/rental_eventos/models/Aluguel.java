@@ -21,7 +21,9 @@ public class Aluguel {
     private Integer id;
     @Column(name = "data_aluguel", nullable = false)
     private LocalDate dataAluguel;
-   
+   @Column(name = "data_devolucao", nullable = false)
+    private LocalDate dataDevolucao;
+
     @ManyToOne
     @JoinColumn(name = "cliente_id", referencedColumnName = "cliente_id")
     private Cliente cliente;
@@ -29,13 +31,15 @@ public class Aluguel {
     @JoinColumn(name = "usuario_id", referencedColumnName = "usuario_id")
     private Usuario usuario;
 
-    public Aluguel(LocalDate dataAluguel, Cliente cliente, Usuario usuario) {
-        this.dataAluguel = dataAluguel;
-        this.cliente = cliente;
-        this.usuario = usuario;
+    public Aluguel() {
     }
 
-    public Aluguel() {
+    public Aluguel(Integer id, LocalDate dataAluguel, LocalDate dataDevolucao, Cliente cliente, Usuario usuario) {
+        this.id = id;
+        this.dataAluguel = dataAluguel;
+        this.dataDevolucao = dataDevolucao;
+        this.cliente = cliente;
+        this.usuario = usuario;
     }
 
     public Integer getId() {
@@ -54,6 +58,14 @@ public class Aluguel {
         this.dataAluguel = dataAluguel;
     }
 
+    public LocalDate getDataDevolucao() {
+        return dataDevolucao;
+    }
+
+    public void setDataDevolucao(LocalDate dataDevolucao) {
+        this.dataDevolucao = dataDevolucao;
+    }
+
     public Cliente getCliente() {
         return cliente;
     }
@@ -68,9 +80,5 @@ public class Aluguel {
 
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
-    }
-
-    
+    }   
 }
-  
-

@@ -2,8 +2,13 @@ package com.senai.rental_eventos.controllers;
 
 import com.senai.rental_eventos.models.Aluguel;
 import com.senai.rental_eventos.services.AluguelService;
+
+import jakarta.annotation.Nonnull;
+
+import java.util.List;
+
+import org.jspecify.annotations.NonNull;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.lang.NonNull;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -27,7 +32,7 @@ public class AluguelController {
 
 
      @PutMapping("/atualizar/{id}")
-    public Aluguel atualizar(@PathVariable @NonNull Integer id, @RequestBody Aluguel aluguel) {
+    public Aluguel atualizar(@PathVariable @Nonnull Integer id, @RequestBody Aluguel aluguel) {
         return aluguelService.atualizar(aluguel, id);
         
     }
@@ -39,7 +44,7 @@ public class AluguelController {
 
 
     @DeleteMapping("/delete/{id}")
-    public String apagar(@PathVariable @NonNull Integer id) {
+    public String apagar(@PathVariable Integer id) {
         boolean deletou = aluguelService.apagar(id);
         if (deletou) {
             return "Aluguel removida com sucesso";

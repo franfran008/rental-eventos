@@ -2,9 +2,9 @@ package com.senai.rental_eventos.controllers;
 
 import java.util.Map;
 
+import org.jspecify.annotations.NonNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.lang.NonNull;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,15 +15,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.senai.infoa.dobi.models.Cliente;
-import com.senai.infoa.dobi.services.ClienteService;
+import com.senai.rental_eventos.models.Cliente;
+import com.senai.rental_eventos.services.ClienteService;
+
 
 @RestController
 @RequestMapping("/cliente")
 public class ClienteController {
     
     @Autowired
-    private ClienteService ClienteService;
+    private ClienteService clienteService;
 
      @PostMapping("/cadastrar")
     public Cliente salvar(@RequestBody @NonNull Cliente cliente) {
@@ -56,11 +57,14 @@ public class ClienteController {
     return ResponseEntity.status(404).body("Falha ao buscar o cliente");
 }
 
-     @DeleteMapping("/desativar/{email}")
-    public Cliente desativar(@PathVariable String email){
-
-        return clienteService.desativar(email);
-    }
+    @DeleteMapping("/delete/{id}")
+        public String apagar(@PathVariable @NonNull Integer id) {
+            boolean deletou = clienteService.apagar(id);
+            if (deletou) {
+                return "Equipamento removido com sucesso";
+            }
+            return "Falha ao remover o equipamento";
+        }
 
    
 }
