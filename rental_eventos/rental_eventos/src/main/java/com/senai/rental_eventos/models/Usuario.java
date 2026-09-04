@@ -23,17 +23,17 @@ public class Usuario {
     private String senha;
     @Column(name = "nascimento", nullable = false)
     private LocalDate nascimento;
-    @Column(name = "cpf", nullable = false)
-    private String cpf;
+    @Column(name = "email", nullable = false)
+    private String email;
 
 public Usuario () {}
 
-public Usuario(Integer id, String nome, String senha, LocalDate nascimento, String cpf) {
+public Usuario(Integer id, String nome, String senha, LocalDate nascimento, String email) {
     this.id = id;
     this.nome = nome;
     this.senha = senha;
     this.nascimento = nascimento;
-    this.cpf = cpf;
+    this.email = email;
 }
 
 public Integer getId() {
@@ -68,12 +68,12 @@ public void setNascimento(LocalDate nascimento) {
     this.nascimento = nascimento;
 }
 
-public String getCpf() {
-    return cpf;
+public String getEmail() {
+    return email;
 }
 
-public void setCpf(String cpf) {
-    this.cpf = cpf;
+public void setEmail(String email) {
+    this.email = email;
 }
 
 

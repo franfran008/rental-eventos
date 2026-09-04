@@ -22,8 +22,8 @@ public Usuario salvar(@NonNull Usuario usuario){
     return usuarioRepository.findById(id).orElse(null);
 }
 
-     public Usuario login(String cpf, String senha){
-        Usuario usuario = usuarioRepository.findByUsuario(cpf, senha);
+     public Usuario login(String email, String senha){
+        Usuario usuario = usuarioRepository.findByUsuario(email, senha);
         if(usuario != null && senha.equals(usuario.getSenha())){
             return usuario;
         }
