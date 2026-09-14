@@ -8,6 +8,9 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+
+import com.senai.rental_eventos.security.JwtAuthorizationFilter;
 
 @Configuration
 public class SecurityConfig {
@@ -19,16 +22,27 @@ public class SecurityConfig {
             .csrf(csrf -> csrf.disable())
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers(
-                    "/auth/login",
+                    "/auth/",
+                    "/usuario/**",
+                    "/cliente/**",
                     "/v3/api-docs/**",
                     "/swagger-ui/**",
-                    "/swagger-ui.html"
+                    "/swagger-ui.html",
+                    "/webjars/**",
+                    "/favicon.ico",
+                    "/error"
                 ).permitAll()
                 .anyRequest().authenticated()
-            );
+                )
+                .addFilterBefore(
+                    jwtAuthorizationFilter,
+                    UsernamePasswordAuthenticationFilter.class
+                );
 
         return http.build();
     }
+
+    
 
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -40,5 +54,11 @@ public class SecurityConfig {
             AuthenticationConfiguration configuration) throws Exception {
 
         return configuration.getAuthenticationManager();
+    }
+
+    private final JwtAuthorizationFilter jwtAuthorizationFilter;
+
+    public SecurityConfig(JwtAuthorizationFilter jwtAuthorizationFilter) {
+        this.jwtAuthorizationFilter = jwtAuthorizationFilter;
     }
 }
